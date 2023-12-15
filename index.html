@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction</title>
+</head>
+<body>
+    <h1>Stock Price Prediction</h1>
+    <form action="/predict" method="post">
+        <label for="company">Select Company:</label>
+        <select name="company" id="company">
+            <option value="Select">Select</option>
+            <option value="gspc">^GSPC</option>
+            <option value="tatamotors">Tata Motors</option>
+        </select>
+        <br><br>
+        <input type="submit" value="Predict">
+    </form>
+</body>
+</html>
