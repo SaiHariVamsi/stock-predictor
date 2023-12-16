@@ -28,7 +28,7 @@ def predict(model, data):
 def visualize_predictions(actual, predicted):
     combined = pd.concat([actual, predicted], axis=1)
     combined.plot()
-    plt.savefig('plot.png')
+    plt.savefig('static/plot.png')
     plt.close()
 
 def main():
