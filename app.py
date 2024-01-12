@@ -1,16 +1,8 @@
 from flask import Flask, render_template
 import pandas as pd
 import os
-import atexit
 
 app = Flask(__name__)
-
-def cleanup():
-    if os.path.exists('static/plot.png'):
-        os.remove('static/plot.png')
-    print('cleaned')
-
-atexit.register(cleanup)
 
 @app.route('/')
 def index():
@@ -21,17 +13,18 @@ def run_prediction(company):
     script_mapping = {
         'tata_steel': 'si_tata_steel.py',
         'tcs' : 'si_tcs.py',
+        'tata_motors' : 'si_tata_motors.py',
         'hdfc' : 'si_hdfc.py',
-        'tata_power' : 'si_tata_power.py',
         'lic' : 'si_lic.py',
-        'irctc' : 'si_irctc'
+        'irctc' : 'si_irctc.py',
+        'tata_power' : 'si_tata_power.py'
     }
     if company in script_mapping:
         command = f'python {script_mapping[company]}'
-        print(f'Executing command: {command}')
+        #print(f'Executing command: {command}')
         os.system(command)
 
-        return render_template('result.html', company_name=company.capitalize())
+        return 'Prediction completed', 200
     else:
         return 'Invalid company selection', 400
 
